@@ -10,16 +10,23 @@ Feel free to see what happens if you draw it 10,000 times as well.
 '''
 import arcade
 import random
-
+SW=500
+SH=300
 class Circle():
     def __init__(self):
-        self.x_pos=random.randint()
-
-
+        self.radius= 10
+        self.x_pos=random.randint(self.radius, SW-self.radius)
+        self.y_pos=random.randint(self.radius, SH-self.radius)
+        self.color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))
+    def draw_circle(self):
+        arcade.draw_circle_filled(self.x_pos, self.y_pos, self.radius, self.color)
 def main():
-    arcade.open_window(300, 300, "10000 circles")
+    arcade.open_window(500, 300, "10000 circles")
     arcade.set_background_color(arcade.color.WHITE)
     arcade.start_render()
+    for i in range(10000):
+        circle=Circle()
+        circle.draw_circle()
 
 
 
